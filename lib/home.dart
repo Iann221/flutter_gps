@@ -8,6 +8,9 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  String latitiude;
+  String longitude;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +23,7 @@ class _HomeState extends State<Home> {
           children: [
             ElevatedButton(
               child: Text('Get Location'),
-              // onPressed: getLocation,
+              // onPressed: getLocation();
             ),
             Container(
               child: Column(
