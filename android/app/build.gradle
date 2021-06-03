@@ -32,8 +32,15 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
     }
 
+//    configurations.all {
+//        resolutionStrategy {
+//            force 'com.google.android.gms:play-services-location:15.0.1'
+//        }
+//    }
+
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+//        multiDexEnabled true
         applicationId "com.example.flutter_gps"
         minSdkVersion 16
         targetSdkVersion 30

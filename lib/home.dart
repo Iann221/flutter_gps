@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 
 class Home extends StatefulWidget {
   const Home({Key key}) : super(key: key);
@@ -8,8 +9,19 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  String latitiude;
-  String longitude;
+  String latitude = '-';
+  String longitude = '-';
+
+  void getLocation() async {
+    var position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    var lat = position.latitude;
+    var long = position.longitude;
+
+    setState(() {
+      latitude = "$lat";
+      longitude = "$long";
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +35,14 @@ class _HomeState extends State<Home> {
           children: [
             ElevatedButton(
               child: Text('Get Location'),
-              // onPressed: getLocation();
+              onPressed: (){
+                getLocation();
+              },
             ),
             Container(
               child: Column(
                   children: [
-                    Text('hasil'),
+                    Text('$latitude ; $longitude'),
                   ]
               ),
               alignment: Alignment.center,
